@@ -64,3 +64,21 @@ Kubernetes architecture
 15. ALl together ( worker and master nodes) together forms a cluster.
 
 16. Master nodes sends instructions to cloud provider api to tell cloud provider to creates the specific resources.
+
+Kubernetes will not manage your infrastructure:
+
+what you will have to do :
+
+1. Create the cluster and the node instances( worker and master nodes)
+
+2. setup api server, kubelet , and other kubernetes services / software on nodes.
+
+3. create cloud provider resources that might be needed ( ex loadbalancer , filesystems)
+
+What kubernetes will do : 
+
+1. kubernetes will use the above resources , create your pods and manages them.
+
+2. monitor pods and re-create them , scale pods etc.
+
+3. kubernetes utlizes the provided cloud resources to apply your configuration / goals
