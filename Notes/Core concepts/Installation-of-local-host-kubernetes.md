@@ -13,3 +13,11 @@ kubectl
 1. A tool for sending instructions to the K8 cluster
 
 2. wITh help of kubectl , we send instructions to the master node , which then further sends instructions to the worker node, for ex if we want to increase no of pods , with the help of kubectl we send info to the master node.
+
+3. cluster is the technical infrastructure , and kubectl is the communication device for talking to the infrastructure
+
+4. When we give minikube start , this gets created and this again can take a couple of minutes,but now this in the end sets up this virtual machine on your local machine and it creates the Cluster, the Kubernetes Cluster inside of that virtual machine. It creates the master node and installs all the software the master node needs on it. And it also installs all the worker nodes software.
+So once this is completed, once this instruction here is done, we have our local development Cluster which we can then control with the kubectl command and where we can then apply our Kubernetes configuration to run our containers inside of this demo local Cluster.
+
+5. use minikube dashboard command to bring up a web dashboard for our cluster.
+
