@@ -30,3 +30,37 @@ Restarting containers :
 
 
 1. If we hit the error route of the application making the container delabirtely to fail , it will crash the container in the pod , and thus it will try to restart the container in the pod and bring back the application. This is feature of auto-healing in kubernetes.
+
+
+Scaling in action:
+
+1. Now we just have one instance of a pod , which is getting managed by kubernetes , if we know that our application will be having more traffic , we can increase the no of pods by below command
+
+kubectl scale deployment <deployment-name> --replicas=3
+
+A replica is simply a instance of a pod or a container . 3 replicas means 3 pod/container is running 3 times.
+
+
+UPdate the deployments.
+
+1. so now if we need to update the source code , we need to rebuild the image and update the deployment object which is prsent , for that use below command for updating the deployment.
+
+kubectl set image deployment <deployment-name> <container-name-running-inside-pod>=<new-image-name>
+
+deployment rollbacks and history:
+
+1. If we want to rollback a deployment to a previous version.
+
+we can use
+
+kubectl rollout undo deployment <deployment-name>
+
+to rollback to 2/3 versions behind,we can inspect how many versions are there for the particular deployment using below command first,
+
+kubectl rollout history deployment <deployment-name>
+
+get the revision version , then run
+
+kubectl rollout undo deployment <deployment-name> --to-revision=1
+
+Now we shall switch to declarative approach from this imperative approach.
