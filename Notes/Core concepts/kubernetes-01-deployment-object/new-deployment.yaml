@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: declarative-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: first-app
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: first-app
+        tier: backend
+    spec:
+      containers:
+        - name: first-container
+          image: vamckrish08/deployment-2:1
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            periodSeconds: 10
+            initialDelaySeconds: 5
+
+          
+
+# IN Selector we also have matchExperessions , which gives us more options on the way we filter 
+# key value pairs.
+
+
+# THere is another option in spec section of the pod template , that is livenessProbe which
+# helps us to customize how the health check of the container must behave , by the way we 
+# configure based on that kubernetes determines whether the container inside the pod
+# is healthy or not.

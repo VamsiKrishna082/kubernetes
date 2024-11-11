@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: declarative-app-service
+  labels:
+    group: backend
+spec:
+  selector:
+    app: first-app
+    tier: backend
+  ports:
+    - protocol: 'TCP'
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer
+
+
+#in selector tags , it should always be the tags of the pods.    
+
+# To applly this file , use kubectl apply -f <file-name>.yaml, to delete this file use
+# kubectl delete -f=<file-name>.yaml
+
+# WE can delete resource either by above method , else using imperative command kubectl delete deployment <deployment-name>
+
+# else we can also delete it by labels , in the metadata , we need to add labels like added to 
+# this service and delete it by below command.
+
+
+# kubectl delete deployments,services -l group=example

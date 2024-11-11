@@ -64,3 +64,7 @@ get the revision version , then run
 kubectl rollout undo deployment <deployment-name> --to-revision=1
 
 Now we shall switch to declarative approach from this imperative approach.
+
+https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.31/
+
+reference api docs
