@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: declarative-data-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: data
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: data
+        tier: backend
+    spec:
+      containers:
+        - name: data-first-container
+          image: vamckrish08/data-2:2
+          env:
+            - name: STORY_FOLDER
+              value: 'story'
+            - name: CUSTOM_MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: declarative-key-value-store
+                  key: CUSTOM_MESSAGE
+          volumeMounts:
+            - mountPath: /app/story
+              name: host-path-data-volume
+      volumes:
+        - name: host-path-data-volume
+          persistentVolumeClaim:
+            claimName: host-pvc
+
+          

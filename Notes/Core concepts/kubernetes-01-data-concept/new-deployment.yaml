@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: declarative-data-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: data
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: data
+        tier: backend
+    spec:
+      containers:
+        - name: data-first-container
+          image: vamckrish08/data-2:1
+          volumeMounts:
+            - mountPath: /app/story
+              name: host-path-data-volume
+      volumes:
+        - name: empty-dir-data-volume
+          emptyDir: {}
+        - name: host-path-data-volume
+          hostPath:
+            path: /data
+            type: DirectoryOrCreate
+
+          
