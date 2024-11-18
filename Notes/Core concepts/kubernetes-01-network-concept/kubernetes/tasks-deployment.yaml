@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tasks-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tasks
+  template:
+    metadata:
+      labels:
+        app: tasks
+    spec:
+      containers:
+        - name: tasks-deployment
+          image: vamckrish08/tasks-deployment:latest
+          imagePullPolicy: Always
+          env:
+            - name: AUTH_ADDRESS
+              value: "auth-services.default"
+            - name: TASKS_FOLDER
+              value: "tasks"

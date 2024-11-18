@@ -1,0 +1,1 @@
+use kubectl logs <pod-name> to see detail logs if container crashes
