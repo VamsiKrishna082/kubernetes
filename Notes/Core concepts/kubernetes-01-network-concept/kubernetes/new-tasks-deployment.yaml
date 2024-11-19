@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: task-container
-          image: vamckrish08/task-image:1
+          image: vamckrish08/task-image:2
           env:
           - name: AUTH_ADDRESS
             value: "auth-service.default"
