@@ -29,4 +29,4 @@ spec:
     spec:
       containers:
         - name: second-node
-          image: vamckrish08/kubernetes:1
+          image: vamckrish08/kubernetes:3
